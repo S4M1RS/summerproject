@@ -21,4 +21,7 @@ from .views import *
 urlpatterns = [
     path('', index, name="index"),
     path('create/', create),
+    path('contacts/', contacts),
+    path('<int:id>/',productData,name='productData'),
+    path('<int:id>/',delete),
 ]

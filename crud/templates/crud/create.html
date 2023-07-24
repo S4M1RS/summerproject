@@ -3,7 +3,7 @@
 {% block start %}
     <h1>Create Products</h1>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{forms}}
         <button type="submit">Save</button>

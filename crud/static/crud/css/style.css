@@ -16,7 +16,6 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    z-index: 100;
 }
 
 .navbar-brand img{
@@ -127,16 +126,6 @@ a:after {
 a:hover:after {
     width: 100%;
     left: 0;
-}
-
-.hero{
-    width: 100vw;
-    height: 100vh;
-    background-color: #fafafa;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
 }
 
 @media screen and (max-width: 767px) {

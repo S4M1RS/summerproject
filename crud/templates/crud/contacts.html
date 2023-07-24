@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block start %}
+<h1>Contact Us</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <p>Name</p>
+    <input type="text" name="name" required autofocus>
+
+    <p>Email</p>
+    <input type="email" name="email" required>
+
+    <p>Message</p>
+    <textarea cols="30" rows="10" name="message"></textarea>
+
+    <button type="submit">Send</button>
+</form>
+{% endblock %}

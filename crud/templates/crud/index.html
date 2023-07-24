@@ -2,9 +2,19 @@
 
 {% block start %}
 
-<div class="hero">
+<div class="main">
+    {% if product %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>{{product.product_name}}</p>
+        <p>{{product.description}}</p>
+        <p>Rs {{product.price}}</p>
+        <button type="submit">Wallah</button>
+    </form>
+    {% endif %}
+
     {% for product in products %}
-    <p>{{product.product_name}}</p>
+    <a href="{% url 'productData' product.id %}"><p>{{product.product_name}}</p></a>
     <p>{{product.description}}</p>
     <p>Rs {{product.price}}</p>
     <br>
