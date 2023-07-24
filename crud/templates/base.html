@@ -1,51 +1,43 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First App</title>
 
-    <style>
-        *{
-            font-family: Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .navbar {
-            display: flex;
-            height: 5rem;
-            background-color: white;
-            width: 100vw;
-            padding: 0 6rem;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: row;
-        }
-
-        .container{
-            width: auto;
-            display: flex;
-            flex-direction: row;
-        }
-
-        .container input{
-            display: flex;
-            height: 3rem;
-            width: 25rem;
-            background-color: #f5f5f5;
-            align-items: center;
-        }
-
-    </style>
+    <link rel="icon" type="image/x-icon" href="{% static '/crud/images/logo/svg/techhy-website-favicon-color.svg' %}">
+    <link rel="stylesheet" href="{% static '/crud/css/style.css' %}">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="">Navbar</a>
+            <div class="left-container container">
+                <a class="navbar-brand" href="#">
+                    <img src="{% static '/crud/images/logo/svg/logo-purple.svg' %}"
+                        alt="logo" />
+                </a>
+                <div class="search-bar">
+                    <i data-feather="search" class="icon"></i>
+                    <input class="search-input-field" type="text" placeholder="Search anything..">
+                </div>
+                <ul>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Discover</a></li>
+                </ul>
+            </div>
 
-            <input type="text" placeholder="Search..">
+            <div class="right-container container">
+                <div class="icon-wrapper">
+                    <i data-feather="shopping-cart" class="icon"></i>
+                </div>
+                <div class="icon-wrapper">
+                    <i data-feather="user" class="icon"></i>
+                </div>
+            </div>
         </div>
 
     </nav>
@@ -54,4 +46,10 @@
 
     {% endblock %}
 </body>
+
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    feather.replace();
+</script>
+
 </html>
