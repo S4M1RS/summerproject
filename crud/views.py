@@ -5,12 +5,12 @@ from .forms import *
 
 def index(request):
     products = Product.objects.all()
-
+    searchdata = request.GET.get('search')
+    if(searchdata is not "" and searchdata is not None):
+        product = Product.objects.filter(product_name__icontains=searchdata)
+        return render(request, "crud/index.html", context={'products':product})
     return render(request, "crud/index.html", context={'products':products})
 
-def product(request):
-    products = Product.objects.all()
-    return render(request, "crud/product.html", context={'products':products})
 
 def create(request):
     forms = ProductForm()
@@ -51,7 +51,7 @@ def updateProduct(request, id):
 def productData(request, id):
     product = Product.objects.get(id=id)
     context  = {'product':product}
-    return render(request, 'crud/index.html', context)
+    return render(request, 'crud/product.html', context)
 
 def contacts(request):
     if(request.method == 'POST'):
@@ -66,5 +66,4 @@ def contacts(request):
         )
         contact.save()
     return render(request, "crud/contacts.html")
-
 

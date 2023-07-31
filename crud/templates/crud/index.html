@@ -15,21 +15,6 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <!-- Particular Product -->
-            {% if product %}
-            <form action="" method="post">
-                {% csrf_token %}
-                <img class="card-img-top" src="{{product.product_image.url}}" alt="productimage"
-                    style="aspect-ratio: 3/2 !important; object-fit: contain;" />
-                <p>{{product.product_name}}</p>
-                <p>{{product.brand}}</p>
-                <p>Rs {{product.price}}</p>
-                <div class="text-center"><a class="btn btn-outline-danger mt-auto"
-                        href="{% url 'techhy:deleteProduct' product.id %}" type="submit">Delete</a></div>
-                <div class="text-center"><a class="btn btn-outline-primary mt-auto"
-                        href="{% url 'techhy:updateProduct' product.id %}" type="submit">Update</a></div>
-            </form>
-            {% endif %}
 
             {% for product in products %}
             <div class="col mb-5">
@@ -59,6 +44,8 @@
         </div>
     </div>
 </section>
+
+
 {% endblock %}
 <!-- Footer-->
 <footer class="py-5 bg-dark">

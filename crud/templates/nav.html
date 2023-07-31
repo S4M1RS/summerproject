@@ -5,12 +5,14 @@
             <a class="navbar-brand" href="{% url 'techhy:index' %}">
                 <img src="{% static '/assets/logo/svg/logo-purple.svg' %}" alt="logo" />
             </a>
-            <div class="search-bar">
-                <i data-feather="search" class="icon"></i>
-                <input class="search-input-field" type="text" placeholder="Search anything..">
-            </div>
+            <div class="container-fluid">
+                <form class="d-flex" method="get" role="search">
+                    {% csrf_token %}
+                  <input class="form-control me-2" type="search" placeholder="Search anything.." aria-label="Search" name="search">
+                  <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div>
             <ul>
-                <li><a href="{% url 'techhy:product' %}">Shop</a></li>
                 <li><a href="{% url 'techhy:contact' %}">Contact</a></li>
             </ul>
         </div>

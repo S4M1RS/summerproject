@@ -22,7 +22,7 @@ app_name = "techhy" #to prevent conflict between same url name between cross app
 
 urlpatterns = [
     path('', index, name='index'),
-    path('product/', product, name='product'),
+    path('product/', productData, name='product'),
     path('create/', create),
     path('contacts/', contacts, name='contact'),
     path('<int:id>/',productData, name='productData'),
