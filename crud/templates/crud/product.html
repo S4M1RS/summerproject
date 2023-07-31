@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<div class="main">
+    <!-- individual product -->
+    {% if product %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <img src="{{product.product_image.url}}" alt="productimage">
+        <p>{{product.product_name}}</p>
+        <p>{{product.description}}</p>
+        <p>Rs {{product.price}}</p>
+        <a href="{% url 'techhy:deleteData' product.id%}">Delete</a>
+        <a href="{% url 'techhy:updateData' product.id%}">Update</a>
+    </form>
+    {% endif %}
+
+    <!-- all products -->
+    {% for product in products %}
+    <img src="{{product.product_image.url}}" alt="productimage">
+    <a href="{% url 'techhy:productData' product.id %}"><p>{{product.product_name}}</p></a>
+    <p>{{product.description}}</p>
+    <p>Rs {{product.price}}</p>
+    <br>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -18,10 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 
+app_name = "techhy" #to prevent conflict between same url name between cross apps
+
 urlpatterns = [
-    path('', index, name="index"),
+    path('', index, name='index'),
+    path('product/', product, name='product'),
     path('create/', create),
-    path('contacts/', contacts),
-    path('<int:id>/',productData,name='productData'),
-    path('<int:id>/',delete),
+    path('contacts/', contacts, name='contact'),
+    path('<int:id>/',productData, name='productData'),
+    path('delete/<int:id>',deleteProduct, name='deleteProduct'),
+    path('update/<int:id>',updateProduct, name='updateProduct'),
 ]

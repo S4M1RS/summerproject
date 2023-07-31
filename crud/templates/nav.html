@@ -1,0 +1,28 @@
+{% load static %}
+<nav class="navbar">
+    <div class="container">
+        <div class="left-container container">
+            <a class="navbar-brand" href="{% url 'techhy:index' %}">
+                <img src="{% static '/assets/logo/svg/logo-purple.svg' %}" alt="logo" />
+            </a>
+            <div class="search-bar">
+                <i data-feather="search" class="icon"></i>
+                <input class="search-input-field" type="text" placeholder="Search anything..">
+            </div>
+            <ul>
+                <li><a href="{% url 'techhy:product' %}">Shop</a></li>
+                <li><a href="{% url 'techhy:contact' %}">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="right-container container">
+            <div class="icon-wrapper">
+                <i data-feather="shopping-cart" class="icon"></i>
+            </div>
+            <div class="icon-wrapper">
+                <i data-feather="user" class="icon"></i>
+            </div>
+        </div>
+    </div>
+
+</nav>

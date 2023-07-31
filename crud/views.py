@@ -2,23 +2,50 @@ from django.shortcuts import render, redirect
 from .models import Product, Contact
 from .forms import *
 
+
 def index(request):
     products = Product.objects.all()
 
     return render(request, "crud/index.html", context={'products':products})
 
-def create(request):
-    forms = ProductForm(request.POST or None)
-    if(forms.is_valid()):
-        forms.save()
-        return redirect('index')
-    
-    return render(request, "crud/create.html",context={'forms':forms})
+def product(request):
+    products = Product.objects.all()
+    return render(request, "crud/product.html", context={'products':products})
 
-def delete(request, id):
+def create(request):
+    forms = ProductForm()
+    if request.method == 'POST':
+        forms = ProductForm(request.POST, request.FILES)
+        if forms.is_valid():
+            forms.save()
+            print("Form is valid")
+            print(forms.cleaned_data['product_image'])
+
+            return redirect('techhy:index')
+        else:
+            print("Form is not valid:", forms.errors)
+    else:
+        forms = ProductForm()
+
+    return render(request, "crud/create.html", context={'forms': forms})
+
+
+
+def deleteProduct(request, id):
     product = Product.objects.get(id=id)
     product.delete()
-    return redirect('index')
+    return redirect('techhy:index')
+
+def updateProduct(request, id):
+    product = Product.objects.get(id=id)
+    forms = ProductForm(request.POST or None, instance=product)
+
+    if(forms.is_valid()):
+        forms.save()
+        return redirect('techhy:index')
+
+    return render(request,"crud/create.html",{'forms':forms})
+
 
 
 def productData(request, id):
@@ -39,3 +66,5 @@ def contacts(request):
         )
         contact.save()
     return render(request, "crud/contacts.html")
+
+
